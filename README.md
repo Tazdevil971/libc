@@ -16,13 +16,23 @@ More detailed information about the design of this library can be found in its
 
 [rfc]: https://github.com/rust-lang/rfcs/blob/master/text/1291-promote-libc.md
 
+## Miosix patches
+This fork of libc contains miosix specific patches, support is still very experimental so beware!
+
 ## Usage
 
 Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-libc = "0.2"
+libc = { git = "https://github.com/Tazdevil971/libc.git" }
+```
+
+And this to force other libraries to use this fork:
+
+```toml
+[patch.crates-io]
+libc = { git = "https://github.com/Tazdevil971/libc.git" }
 ```
 
 ## Features

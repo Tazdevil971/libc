@@ -1648,7 +1648,12 @@ cfg_if! {
 }
 
 cfg_if! {
-    if #[cfg(target_env = "newlib")] {
+    if #[cfg(target_os = "miosix")] {
+        // Miosix uses a specially patched version of newlib
+        // that is almost incompatible with libc newlib
+        mod miosix;
+        pub use self::miosix::*;
+    } else if #[cfg(target_env = "newlib")] {
         mod newlib;
         pub use self::newlib::*;
     } else if #[cfg(any(target_os = "linux",
